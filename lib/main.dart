@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_reader/appbar_leading.dart';
+import 'package:pdf_reader/appbar_actions.dart';
+import 'package:pdf_reader/recent_page.dart';
 
 void main() {
   runApp(App());
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,10 @@ class App extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Recent'),
-          actions: [AppBarLeading()],
+          actions: [AppBarActions()],
           backgroundColor: Colors.black87,
         ),
+        body: const RecentPage(),
       ),
     );
   }
