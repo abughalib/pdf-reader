@@ -12,10 +12,8 @@ class AppBarActions extends StatelessWidget {
       children: <Widget>[
         IconButton(
           onPressed: () async => {
-            filePickerResult = await FilePicker.platform.pickFiles(
-              type: FileType.custom,
-              allowedExtensions: ['pdf']
-            )
+            filePickerResult = await FilePicker.platform
+                .pickFiles(type: FileType.custom, allowedExtensions: ['pdf'])
           },
           icon: const Icon(Icons.file_open),
         )
