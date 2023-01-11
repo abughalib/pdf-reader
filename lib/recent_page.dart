@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pdf_reader/preview.dart';
 
 const gridRowCount = 3;
 
@@ -7,9 +8,10 @@ class RecentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: gridRowCount,
-      children: const [],
-    );
+    return const PDFPreview();
+    // return GridView.count(
+    //   crossAxisCount: gridRowCount,
+    //   children: const [PDFPreview()],
+    // );
   }
 }
