@@ -27,18 +27,11 @@ class _PDFPreviewState extends State<PDFPreview> {
     return showDialog<String>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text('Define $selectedText'),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
+        titlePadding: const EdgeInsets.all(10.0),
+        title: Text(selectedText),
+        scrollable: true,
         content: ShowDefinition(selectedWord: selectedText),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Navigator.pop(context, 'Cancel'),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, 'OK'),
-            child: const Text('OK'),
-          ),
-        ],
       ),
     );
   }
