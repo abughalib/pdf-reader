@@ -29,7 +29,7 @@ class OnlineDefinition {
   }
 }
 
-enum FetchError { notFound, internalError, serverError, noError }
+enum FetchError { contentNotFound, internalError, serverError, noError }
 
 enum FetchStatus { loading, completed, error }
 
@@ -64,7 +64,7 @@ class OnlineDefinitionResult {
       antonyms: [],
     );
     err = false;
-    fetchError = FetchError.notFound;
+    fetchError = FetchError.contentNotFound;
   }
 
   OnlineDefinitionResult.fromJson(Map<String, dynamic> json) {
@@ -98,4 +98,16 @@ class OnlineDefinitionResult {
   bool isError() {
     return err;
   }
+}
+
+class HTTPResponseStatusCode {
+  static const int ok = 200;
+  static const int contentNotFound = 204;
+  static const int badRequest = 400;
+  static const int forbidden = 403;
+  static const int resourceExhausted = 429;
+  static const int pageNotFound = 404;
+  static const int internalServerError = 500;
+  static const int serviceUnavailable = 503;
+  static const int gatewayTimeout = 504;
 }
