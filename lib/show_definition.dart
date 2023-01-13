@@ -20,7 +20,6 @@ class ShowDefinition extends StatefulWidget {
 }
 
 class _ShowDefinitionState extends State<ShowDefinition> {
-
   // Check Internet Connectivity here;
   Connectivity connectivity = Connectivity.online;
 
@@ -52,12 +51,17 @@ class OfflineMeaning extends StatelessWidget {
     return Container(
       width: 20,
       alignment: Alignment.center,
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 15.0),
       child: FutureBuilder(
         future: queryDefinition(),
         initialData: "Fetching...",
         builder: (context, AsyncSnapshot<String> snapshot) =>
             SingleChildScrollView(
-          child: Text(snapshot.data ?? ""),
+          child: SizedBox(
+            height: 250,
+            width: 250,
+            child: Center(child: Text(snapshot.data ?? "")),
+          ),
         ),
       ),
     );
@@ -100,9 +104,9 @@ class DefinitionFormat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (onlineDefinitionResult.fetchStatus == FetchStatus.loading) {
-      return const Text("Loading Meaning...");
+      return const Center(child: Text("Loading Meaning..."));
     } else if (onlineDefinitionResult.fetchStatus == FetchStatus.error) {
-      return const Text("Error...");
+      return const Center(child: Text("Error..."));
     } else {
       return SizedBox(
         height: 300,
@@ -141,9 +145,6 @@ class FormatMeaning extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Text(
-    //   "${meaning.def[0]}\n${meaning.def[1]}"
-    // );
     return ListView.separated(
       shrinkWrap: true,
       itemCount: meaning.def.length,
