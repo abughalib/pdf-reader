@@ -1,10 +1,10 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:pdf_reader/providers/file_pick_provider.dart';
+import 'package:provider/provider.dart';
 
 class AppBarActions extends StatelessWidget {
-  AppBarActions({super.key, this.filePickerResult});
-
-  FilePickerResult? filePickerResult;
+  const AppBarActions({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +12,8 @@ class AppBarActions extends StatelessWidget {
       children: <Widget>[
         IconButton(
           onPressed: () async => {
-            filePickerResult = await FilePicker.platform
-                .pickFiles(type: FileType.custom, allowedExtensions: ['pdf'])
+            context.read<PDFFilePath>().setPath(await FilePicker.platform
+                .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']))
           },
           icon: const Icon(Icons.file_open),
         )
